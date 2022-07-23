@@ -1,0 +1,28 @@
+<style>
+table, th,tr, td{
+    border:2px solid black;
+    border-collapse: collapse;
+    padding: 2vh;
+}
+</style>
+<div>
+    <div>
+        <div>
+            <table>
+                <th> First Name </th>
+                <th> Last Name </th>
+                <th> Age </th>
+            
+                {% for student in data %}
+                <tr>
+                    <td>{{student.first_name}}</td>
+                    <td>{{student.last_name}}</td>
+                    <td>{{student.age}}</td>
+                </tr>
+                {% endfor %}
+            </table>
+        </div>
+        
+    </div>
+    <a href ="create">Add Student</a>
+</div>

@@ -7,14 +7,10 @@ RUN apt-get update \
     && rm -rf /var/lib/apt/lists/*
 
 # copying requirement.txt file to present working directory
-COPY requirements.txt .
+WORKDIR /code
+COPY requirements.txt /code/
 
 # installing dependency in container
 RUN pip install -r requirements.txt
-
-# copying all the files to present working directory
-RUN django-admin startproject django_api .
-COPY settings.py /django_api
-# WORKDIR /django_api
-# running server
-CMD ["python", "manage.py", "runserver", "0.0.0.0:8000"]
+COPY . /code/
+RUN python manage.py migrate
